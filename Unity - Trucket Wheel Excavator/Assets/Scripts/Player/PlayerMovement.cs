@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speedDampTime = 0.01f;
     public float sensitivityX = 1.0f;
     public float animationSpeed = 1.5f;
+
     private Animator anim;
     private HashIDs hash;
 
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
         float move = Input.GetAxis("Move");
         bool sneak = Input.GetButton("Sneak");
         float turn = Input.GetAxis("Turn");
+        bool jump = Input.GetButton("Jump");
         Rotating(turn);
         MovementManagement(move, sneak);
     }
@@ -47,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
         if (move > 0)
         {
             anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                anim.SetFloat(hash.sprintingBool, animationSpeed, speedDampTime, move);
+            }
         }
         else
         {

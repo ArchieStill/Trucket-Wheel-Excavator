@@ -9,6 +9,8 @@ public class HashIDs : MonoBehaviour
 	public int walkState;
 	public int speedFloat;
 	public int sneakingBool;
+	public int jumpingBool;
+	public int sprintingBool;
 
 	private void Awake()
 	{
@@ -17,5 +19,7 @@ public class HashIDs : MonoBehaviour
 		walkState = Animator.StringToHash("Walk");
 		speedFloat = Animator.StringToHash("Speed");
 		sneakingBool = Animator.StringToHash("Sneaking");
+		jumpingBool = Animator.StringToHash("Jumping");
+		sprintingBool = Animator.StringToHash("Sprinting");
 	}
 }
