@@ -152,6 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f7c6f32c332f145b70468dd6a80997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dyingState: 0
+  deadBool: 0
+  walkState: 0
+  speedFloat: 0
+  sneakingBool: 0
 --- !u!4 &186696151
 Transform:
   m_ObjectHideFlags: 0
@@ -673,6 +678,21 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &1071789058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071789051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec54d5cdd50adf4b8250fafb74f9972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedDampTime: 0.01
+  sensitivityX: 1
+  animationSpeed: 1.5
 --- !u!1 &1256345709
 GameObject:
   m_ObjectHideFlags: 0
