@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public float speedDampTime = 0.01f;
     public float sensitivityX = 1.0f;
     public float animationSpeed = 1.5f;
+    public Vector3 jumpVector;
+    public float JumpForce = 2.0f;
+    public bool isGrounded = true;
 
     private Animator anim;
     private HashIDs hash;
@@ -16,6 +19,13 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<HashIDs>();
         anim.SetLayerWeight(1, 1f);
+
+        jumpVector = new Vector3(0, 2.0f, 0);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        isGrounded = true;
     }
 
     void FixedUpdate()
@@ -24,8 +34,9 @@ public class PlayerMovement : MonoBehaviour
         bool sneak = Input.GetButton("Sneak");
         float turn = Input.GetAxis("Turn");
         bool jump = Input.GetButton("Jump");
+        bool sprint = Input.GetButton("Sprint");
         Rotating(turn);
-        MovementManagement(move, sneak);
+        MovementManagement(move, sprint, sneak, jump);
     }
 
     void Rotating(float mouseXInput)
@@ -43,15 +54,23 @@ public class PlayerMovement : MonoBehaviour
             ourBody.MoveRotation(ourBody.rotation * deltaRotation);
         }
     }
-    void MovementManagement(float move, bool sneaking)
+    void MovementManagement(float move, bool sprinting, bool sneaking, bool jumping)
     {
+        Rigidbody ourBody = this.GetComponent<Rigidbody>();
         anim.SetBool(hash.sneakingBool, sneaking);
+        anim.SetBool(hash.jumpingBool, jumping);
+        if (Input.GetButton("Jump") && isGrounded)
+        {
+            ourBody.AddForce(jumpVector * JumpForce, ForceMode.Impulse);
+            isGrounded = false;
+        }
+
         if (move > 0)
         {
             anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetButton("Sprint"))
             {
-                anim.SetFloat(hash.sprintingBool, animationSpeed, speedDampTime, move);
+                anim.SetBool(hash.sprintingBool, sprinting);
             }
         }
         else
