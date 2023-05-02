@@ -28,7 +28,6 @@ public class FollowCamera : MonoBehaviour
         mouseY = Input.GetAxis("Mouse Y");
         mouseZ = Input.GetAxis("Mouse ScrollWheel");
         float angleBetween = Vector3.Angle(Vector3.up, transform.forward);
-        Debug.Log("offset angle: " + angleBetween);
 
         if (Input.GetMouseButton (1))
         {
