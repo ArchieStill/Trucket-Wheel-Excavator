@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 138
+  controlID: 45
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 42
+  controlID: 46
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 43
+  controlID: 47
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -276,7 +276,7 @@ MonoBehaviour:
   - {fileID: 17}
   - {fileID: 12}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_MiniTool: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_CurrentEditor: 1
+  m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
 --- !u!114 &13
@@ -382,23 +382,23 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Models
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Models
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Archie Still\Desktop\!UNI WORK\Unity Assignment\Po3DE-Assignment-2-a2-still\Unity
     - Trucket Wheel Excavator
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 96ac0000
-    m_LastClickedID: 44182
-    m_ExpandedIDs: 0000000096ac000098ac00009eac0000a0ac0000a6ac000036ad0000383c0100483c0100383e0100089001006eea01003aeb010042eb0100d2b80400e8b80400feb8040000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 88}
+    m_SelectedIDs: 74690000
+    m_LastClickedID: 26996
+    m_ExpandedIDs: 000000006e69000070690000726900007469000076690000786900007a6900007c6900007e690000806900008269000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -426,7 +426,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 000000006e69000070690000726900007469000076690000786900007a6900007c6900007e6900008069000082690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -470,7 +470,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -556,7 +556,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 669efcff6e9efcff729efcffc6dbfcff6eb9feff70b9feffd6c9fefff206ffff0607ffffc608ffffca08ffffd20dffffa40effff7a10ffff7ca5ffff6ea7ffffb43c0100023d0100103d0100ea3d0100
+      m_ExpandedIDs: 34fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -838,9 +838,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.89730275, y: 3.0706081, z: -0.43411112}
+    m_Target: {x: -0.031832993, y: -0.25411534, z: 4.94387}
     speed: 2
-    m_Value: {x: 0.89730275, y: 3.0706081, z: -0.43411112}
+    m_Value: {x: -0.031832993, y: -0.25411534, z: 4.94387}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -886,13 +886,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.31869623, y: 0.007140329, z: -0.00339454, w: 0.9480124}
+    m_Target: {x: 0.15537636, y: 0.14339733, z: -0.023812829, w: 0.9772967}
     speed: 2
-    m_Value: {x: 0.3200607, y: 0.0071339505, z: -0.003404646, w: 0.94736403}
+    m_Value: {x: 0.1539162, y: 0.14193946, z: -0.023362212, w: 0.97755677}
   m_Size:
-    m_Target: 1.3489136
+    m_Target: 4.9754934
     speed: 2
-    m_Value: 1.3489136
+    m_Value: 4.9754934
   m_Ortho:
     m_Target: 0
     speed: 2

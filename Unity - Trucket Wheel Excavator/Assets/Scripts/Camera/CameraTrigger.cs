@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
+    public bool isPlayer = true;
+
     private void Awake()
     {
         liveCam = Camera.allCameras[0];
@@ -13,8 +15,10 @@ public class CameraTrigger : MonoBehaviour
     {
         GameObject PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
         Collider PlayerCollider = PlayerCharacter.GetComponent<Collider>();
-        if (other == PlayerCollider && (Input.GetButton("Interact")))
+        if (other == PlayerCollider && (Input.GetKey(KeyCode.E)) && isPlayer)
         {
+            isPlayer = false;
+            Debug.Log("Hello");
             triggeredCam.enabled = true;
             liveCam.enabled = false;
 
