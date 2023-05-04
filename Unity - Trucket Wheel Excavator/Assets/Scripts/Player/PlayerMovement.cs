@@ -6,9 +6,11 @@ public class PlayerMovement : MonoBehaviour
     public float sensitivityX = 1.0f;
     public float animationSpeed = 1.5f;
     public Vector3 jumpVector;
-    public float JumpForce = 2.0f;
+    public Vector3 groundVector;
+    public float jumpForce = 2.0f;
     public bool isGrounded = true;
     public bool isPlayer = true;
+    private bool isOnGround = true;
 
     private Animator anim;
     private HashIDs hash;
@@ -41,9 +43,10 @@ public class PlayerMovement : MonoBehaviour
             anim.SetLayerWeight(0, 0);
 
             jumpVector = new Vector3(0, 2.0f, 0);
+            groundVector = new Vector3(0, -2.0f, 0);
         }
     }
-
+    
     private void OnCollisionStay(Collision collision)
     {
         isGrounded = true;
@@ -90,13 +93,25 @@ public class PlayerMovement : MonoBehaviour
         if (isPlayer)
         {
             Rigidbody ourBody = this.GetComponent<Rigidbody>();
+            // float playerHeight = gameObject.transform.localScale.y;
+            if (Physics.Raycast (transform.position, Vector3.down, 0.1f))
+            {
+                gameObject.transform.position = new Vector3(transform.position.x, 0.00000000f, transform.position.z);
+                isOnGround = true;
+            }
+            else
+            {
+                isOnGround = false;
+            }
+
             anim.SetBool(hash.sneakingBool, sneaking);
             anim.SetBool(hash.jumpingBool, jumping);
             anim.SetBool(hash.sprintingBool, sprinting);
-            if (Input.GetButton("Jump") && isGrounded)
+            if (Input.GetButton("Jump") && isOnGround)
             {
-                ourBody.AddForce(jumpVector * JumpForce, ForceMode.Impulse);
-                isGrounded = false;
+                Debug.Log("JUMP");
+                ourBody.AddForce(jumpVector * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
             }
 
             if (move > 0)
