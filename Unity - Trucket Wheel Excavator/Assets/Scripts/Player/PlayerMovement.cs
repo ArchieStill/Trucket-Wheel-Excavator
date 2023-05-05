@@ -6,33 +6,14 @@ public class PlayerMovement : MonoBehaviour
     public float sensitivityX = 1.0f;
     public float animationSpeed = 1.5f;
     public Vector3 jumpVector;
-    public Vector3 groundVector;
-    public float jumpForce = 2.0f;
+    public float jumpForce = 2.5f;
     public bool isGrounded = true;
-    public bool isPlayer = true;
-    private bool isOnGround = true;
+    private bool isPlayer = true;
 
     private Animator anim;
     private HashIDs hash;
-
-    private void Update()
-    {
-        if (!isPlayer)
-        {
-            if (Input.GetKey(KeyCode.E))
-            {
-                isPlayer = true;
-            }
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.E))
-            {
-                isPlayer = false;
-                Debug.Log("ISPLAYER FALSE");
-            }
-        }
-    }
+    private Rigidbody ourBody;
+    RaycastHit hit;
 
     void Awake()
     {
@@ -41,9 +22,9 @@ public class PlayerMovement : MonoBehaviour
             anim = GetComponent<Animator>();
             hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<HashIDs>();
             anim.SetLayerWeight(0, 0);
+            ourBody = this.GetComponent<Rigidbody>();
 
             jumpVector = new Vector3(0, 2.0f, 0);
-            groundVector = new Vector3(0, -2.0f, 0);
         }
     }
     
@@ -56,68 +37,83 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         if (isPlayer)
         {
             float move = Input.GetAxis("Move");
             bool sneak = Input.GetButton("Sneak");
-            float turn = Input.GetAxis("Turn");
-            bool jump = Input.GetButton("Jump");
+            bool jump = Input.GetButtonDown("Jump");
             bool sprint = Input.GetButton("Sprint");
-            Rotating(turn);
             MovementManagement(move, sprint, sneak, jump);
         }
     }
 
-    void Rotating(float mouseXInput)
+    void FixedUpdate()
     {
         if (isPlayer)
         {
-            // access the player's rigidbody
-            Rigidbody ourBody = this.GetComponent<Rigidbody>();
+            float turn = Input.GetAxis("Turn");
+            Rotating(turn);
+        }
+    }
 
-            // check whether we have rotation data to apply
-            if (mouseXInput != 0)
+    public void Enable()
+    {
+        isPlayer = true;
+        // Change position so player spawns next to truck
+    }
+    public void Disable()
+    {
+        isPlayer = false;
+        anim.SetFloat(hash.speedFloat, 0);
+    }
+    public bool getIsPlayer()
+    {
+        return isPlayer;
+    }
+
+    void Rotating(float xInput)
+    {
+        if (isPlayer)
+        {
+            if (xInput != 0)
             {
-                // use mouse input to create a Euler angle which provides rotation in the Y axis
-                // this value is then turned into a Quarternion
-                Quaternion deltaRotation = Quaternion.Euler(0f, mouseXInput * sensitivityX, 0f);
-                // this value is applied to turn the body via the rigidbody
+                Quaternion deltaRotation = Quaternion.Euler(0f, xInput * sensitivityX, 0f);
                 ourBody.MoveRotation(ourBody.rotation * deltaRotation);
             }
         }
+        Debug.Log(xInput);
     }
     void MovementManagement(float move, bool sprinting, bool sneaking, bool jumping)
     {
         if (isPlayer)
         {
-            Rigidbody ourBody = this.GetComponent<Rigidbody>();
-            // float playerHeight = gameObject.transform.localScale.y;
-            if (Physics.Raycast (transform.position, Vector3.down, 0.1f))
+            Ray ray = new Ray(transform.position, Vector3.down);
+            Debug.DrawRay(transform.position, Vector3.down, Color.red, 1);
+            Physics.Raycast(ray, out hit);
+            if (hit.distance < 0.25f)
             {
-                gameObject.transform.position = new Vector3(transform.position.x, 0.00000000f, transform.position.z);
-                isOnGround = true;
+                isGrounded = true;
             }
             else
             {
-                isOnGround = false;
+                isGrounded = false;
             }
 
             anim.SetBool(hash.sneakingBool, sneaking);
             anim.SetBool(hash.jumpingBool, jumping);
             anim.SetBool(hash.sprintingBool, sprinting);
-            if (Input.GetButton("Jump") && isOnGround)
+            if (jumping && isGrounded)
             {
-                Debug.Log("JUMP");
                 ourBody.AddForce(jumpVector * jumpForce, ForceMode.Impulse);
-                isOnGround = false;
+                isGrounded = false;
             }
 
             if (move > 0)
             {
                 anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
-                if (Input.GetButton("Sprint"))
+                if (Input.GetButtonDown("Sprint"))
                 {
                     anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
                 }

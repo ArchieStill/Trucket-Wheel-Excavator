@@ -4,41 +4,44 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
-    public bool isPlayer = true;
+    public Camera triggeredCam;
+    public Camera liveCam;
+
+    public bool isClose = false;
+    public PlayerMovement playerMovement;
+
+    public GameObject PlayerCharacter;
+    public Collider PlayerCollider;
 
     private void Awake()
     {
+        PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
+        PlayerCollider = PlayerCharacter.GetComponent<Collider>();
         liveCam = Camera.allCameras[0];
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
-        Collider PlayerCollider = PlayerCharacter.GetComponent<Collider>();
-        if (other == PlayerCollider && (Input.GetKey(KeyCode.E)) && isPlayer)
+        if (other == PlayerCollider)
         {
-            isPlayer = false;
-            Debug.Log("Hello");
-            triggeredCam.enabled = true;
-            liveCam.enabled = false;
-
+            isClose = true;
             liveCam = Camera.allCameras[0];
         }
     }
-    /*private void OnTriggerExit(Collider other)
-    {
-        GameObject PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
-        Collider PlayerCollider = PlayerCharacter.GetComponent<Collider>();
-        if (other == PlayerCollider)
-        {
-            triggeredCam.enabled = false;
-            liveCam.enabled = true;
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (Input.GetKey(KeyCode.E) && isClose && playerMovement.getIsPlayer())
+        {
+            playerMovement.Disable();
+            triggeredCam.enabled = true;
+            liveCam.enabled = false;
             liveCam = Camera.allCameras[0];
         }
-    }*/
-    
+    }
 
-    public Camera triggeredCam;
-    public Camera liveCam;
+    private void OnTriggerExit(Collider other)
+    {
+        
+    }
 }

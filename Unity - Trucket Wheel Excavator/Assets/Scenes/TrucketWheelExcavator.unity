@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3570069, g: 0.69702756, b: 0.72354054, a: 1}
+  m_IndirectSpecularColor: {r: 0.35702324, g: 0.6970393, b: 0.7235334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -332,6 +332,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26b444a8e4396bf4aa6939c6a8a41a56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2031892939}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26b444a8e4396bf4aa6939c6a8a41a56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1285569137}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26b444a8e4396bf4aa6939c6a8a41a56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2072665023}
   m_SourcePrefab: {fileID: 100100000, guid: 26b444a8e4396bf4aa6939c6a8a41a56, type: 3}
 --- !u!1 &575149906
 GameObject:
@@ -364,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617d9eb51da662e4b9eb064059169adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 2050923750}
+  target: {fileID: 1285569136}
 --- !u!20 &575149909
 Camera:
   m_ObjectHideFlags: 0
@@ -822,6 +828,10 @@ PrefabInstance:
       value: Robot Kyle
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -986,10 +996,9 @@ MonoBehaviour:
   sensitivityX: 2
   animationSpeed: 1.5
   jumpVector: {x: 0, y: 2, z: 0}
-  groundVector: {x: 0, y: 0, z: 0}
-  jumpForce: 2
+  jumpForce: 2.5
   isGrounded: 1
-  isPlayer: 1
+  isOnGround: 1
 --- !u!4 &1071789060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
@@ -1024,6 +1033,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1071789060}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1285569136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285569137}
+  m_Layer: 0
+  m_Name: TruckCameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285569137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285569136}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.08330032, y: 0.0628, z: -0.0009}
+  m_LocalScale: {x: 0.026882077, y: 0.026882077, z: 0.026882077}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2050923756}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1707853093
@@ -1280,6 +1320,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.025, y: 0.03, z: 0.0325}
   m_Center: {x: -0.04, y: 0.036, z: 0.009}
+--- !u!114 &2050923759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050923750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4804d333fe89d094584c192e72a52a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedDampTime: 0.01
+  sensitivityX: 1
+  animationSpeed: 1.5
+  isTruck: 0
+--- !u!95 &2050923760
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050923750}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: de5d5eea8dd28ab40953b6add179e031, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2072665018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,29 +1368,14 @@ GameObject:
   - component: {fileID: 2072665022}
   - component: {fileID: 2072665021}
   - component: {fileID: 2072665020}
-  - component: {fileID: 2072665019}
+  - component: {fileID: 2072665024}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: TriggerCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2072665019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072665018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9bd7df77800005459709d5d6477d352, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPlayer: 1
-  triggeredCam: {fileID: 575149909}
-  liveCam: {fileID: 963194227}
 --- !u!65 &2072665020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1385,14 +1446,33 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072665018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.55, y: 3.0232759, z: 5.6053863}
-  m_LocalScale: {x: 9.551661, y: 5.8642335, z: 3.3689735}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.090861425, y: 0.08127193, z: -0.0009512515}
+  m_LocalScale: {x: 0.18927431, y: 0.15764277, z: 0.058006216}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 2050923756}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2072665024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072665018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655ad12481a96cf41a652dd7d86891d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1071789058}
+  truckMovement: {fileID: 2050923759}
+  triggeredCam: {fileID: 575149909}
+  liveCam: {fileID: 963194227}
+  isClose: 0
+  PlayerCharacter: {fileID: 0}
+  PlayerCollider: {fileID: 0}
 --- !u!1001 &7104531348957843062
 PrefabInstance:
   m_ObjectHideFlags: 0
