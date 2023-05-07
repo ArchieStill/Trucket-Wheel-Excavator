@@ -31,7 +31,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey(KeyCode.E) && isClose && playerMovement.getIsPlayer())
+        if (Input.GetKey(KeyCode.E) && isClose && playerMovement.GetIsPlayer())
         {
             playerMovement.Disable();
             triggeredCam.enabled = true;

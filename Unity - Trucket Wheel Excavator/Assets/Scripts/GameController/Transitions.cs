@@ -24,14 +24,13 @@ public class Transitions : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (playerMovement.getIsPlayer() && isClose)
+            if (playerMovement.GetIsPlayer() && isClose)
             {
                 truckMovement.isTruck = true;
                 playerMovement.Disable();
                 PlayerCharacter.SetActive(false);
                 triggeredCam.enabled = true;
                 liveCam.enabled = false;
-                Debug.Log("TRUCK");
             }
             else if (truckMovement.isTruck)
             {
@@ -41,12 +40,11 @@ public class Transitions : MonoBehaviour
                 triggeredCam.enabled = false;
                 liveCam.enabled = true;
                 liveCam = Camera.allCameras[0];
-                Debug.Log("PLAYER");
             }
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    /* private void OnTriggerStay(Collider other)
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -68,9 +66,9 @@ public class Transitions : MonoBehaviour
                 triggeredCam.enabled = true;
                 liveCam.enabled = false;
                 Debug.Log("TRUCK");
-            }*/
+            }
         }
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {

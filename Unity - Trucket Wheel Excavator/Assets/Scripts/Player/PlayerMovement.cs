@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         isPlayer = false;
         anim.SetFloat(hash.speedFloat, 0);
     }
-    public bool getIsPlayer()
+    public bool GetIsPlayer()
     {
         return isPlayer;
     }
@@ -83,15 +83,15 @@ public class PlayerMovement : MonoBehaviour
                 ourBody.MoveRotation(ourBody.rotation * deltaRotation);
             }
         }
-        Debug.Log(xInput);
+        /// Debug.Log(xInput);
     }
     void MovementManagement(float move, bool sprinting, bool sneaking, bool jumping)
     {
         if (isPlayer)
         {
-            Ray ray = new Ray(transform.position, Vector3.down);
-            Debug.DrawRay(transform.position, Vector3.down, Color.red, 1);
-            Physics.Raycast(ray, out hit);
+            /// Ray ray = new Ray(transform.position, Vector3.down);
+            /// Debug.DrawRay(transform.position, Vector3.down, Color.red, 1);
+            /// Physics.Raycast(ray, out hit);
             if (hit.distance < 0.25f)
             {
                 isGrounded = true;
