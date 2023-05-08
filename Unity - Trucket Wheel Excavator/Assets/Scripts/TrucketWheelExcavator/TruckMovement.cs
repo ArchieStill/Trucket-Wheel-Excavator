@@ -61,11 +61,11 @@ public class TruckMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 Debug.Log("Working");
-                Vector3 movement = new(1f, 0, 0f);
+                Vector3 movement = new(100f, 0, 0f);
                 movement *= speed;
                 movement = transform.TransformDirection(movement);
 
-                truckBody.AddForce(movement, ForceMode.Force);
+                truckBody.AddForce(movement, ForceMode.VelocityChange);
             }
             /*Vector3 movement = new(forward, 0, sideways);
             movement *= speed;
