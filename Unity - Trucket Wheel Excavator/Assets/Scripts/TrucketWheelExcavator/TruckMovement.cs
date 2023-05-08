@@ -4,26 +4,21 @@ using UnityEngine;
 
 public class TruckMovement : MonoBehaviour
 {
-    /*public float speedDampTime = 0.01f;
+    public float speedDampTime = 0.01f;
     public float sensitivityX = 1.0f;
-    public float animationSpeed = 1.5f;*/
+    public float animationSpeed = 1.5f;
     public bool isTruck = false;
     public float speed;
     public float sensitivity;
+    public bool isMoving = false;
 
-    /*private Animator anim;
-    private TruckHashIDs hash;*/
+    private Animator anim;
+    private TruckHashIDs hash;
     private Rigidbody truckBody;
 
-    void Start() /// is usually Awake()
+    void Start()
     {
-        if (isTruck)
-        {
-            /*anim = GetComponent<Animator>();
-            hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<TruckHashIDs>();
-            anim.SetLayerWeight(0, 0);*/
-            truckBody = this.GetComponent<Rigidbody>();
-        }
+        truckBody = this.GetComponent<Rigidbody>();
     }
 
     /*private void Update()
@@ -36,7 +31,7 @@ public class TruckMovement : MonoBehaviour
         {
             Debug.Log("HASH NULL");
         }
-        /*anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<TruckHashIDs>();
         anim.SetLayerWeight(0, 0);
         if (isTruck)
@@ -52,30 +47,22 @@ public class TruckMovement : MonoBehaviour
     {
         if (isTruck)
         {
-            /*float turn = Input.GetAxis("Turn");
+            float turn = Input.GetAxis("Turn");
             Rotating(turn);
 
             float forward = Input.GetAxisRaw("Move");
-            float sideways = Input.GetAxisRaw("Horizontal");*/
 
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                Debug.Log("Working");
-                Vector3 movement = new(100f, 0, 0f);
-                movement *= speed;
-                movement = transform.TransformDirection(movement);
-
-                truckBody.AddForce(movement, ForceMode.VelocityChange);
-            }
-            /*Vector3 movement = new(forward, 0, sideways);
+            Vector3 movement = new(forward, 0, 0f);
             movement *= speed;
             movement = transform.TransformDirection(movement);
 
-            truckBody.AddForce(movement, ForceMode.VelocityChange);*/
+            truckBody.AddForce(movement, ForceMode.VelocityChange);
+            isMoving = true;
+            Debug.Log(isMoving);
         }
     }
 
-    /*void Rotating(float xInput)
+    void Rotating(float xInput)
     {
         if (isTruck)
         {
@@ -87,20 +74,18 @@ public class TruckMovement : MonoBehaviour
         }
     }
 
-    void MovementManagement(float move, bool spin, bool moving)
+    /*void MovementManagement(float move, bool spin, bool moving)
     {
         if (isTruck)
         {
             anim.SetBool(hash.spinBool, spin);
             if (move > 0)
             {
-                // anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
-                anim.SetBool(hash.driveBool, moving);
-                Debug.Log(hash.driveBool);
+                anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
             }
             else
             {
-                // anim.SetFloat(hash.speedFloat, 0);
+                anim.SetFloat(hash.speedFloat, 0);
             }
         }
     }*/

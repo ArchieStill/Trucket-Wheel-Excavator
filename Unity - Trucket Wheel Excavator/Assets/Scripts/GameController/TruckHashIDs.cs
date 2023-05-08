@@ -13,9 +13,6 @@ public class TruckHashIDs : MonoBehaviour
 
 	private void Awake()
 	{
-		// drivingState = Animator.StringToHash("Drive");
-		// speedFloat = Animator.StringToHash("Speed");
-		// upBool = Animator.StringToHash("WheelUp");
 		spinBool = Animator.StringToHash("WheelMove");
 		driveBool = Animator.StringToHash("TruckMoving");
 		moveWheel = Animator.StringToHash("MoveUp");
