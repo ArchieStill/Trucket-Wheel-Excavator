@@ -80,10 +80,15 @@ public class TruckMovement : MonoBehaviour
                 animator.SetBool("Driving", true);
             }
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetButton("Spin"))
             {
                 animator.SetBool("Spinning", true);
             }
+            if (Input.GetButton("StopSpin"))
+            {
+                animator.SetBool("Spinning", false);
+            }
+
         }
         else
         {
