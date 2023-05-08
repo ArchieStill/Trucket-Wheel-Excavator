@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TruckMovement : MonoBehaviour
 {
-    public float speedDampTime = 0.01f;
+    /*public float speedDampTime = 0.01f;
     public float sensitivityX = 1.0f;
-    public float animationSpeed = 1.5f;
+    public float animationSpeed = 1.5f;*/
     public bool isTruck = false;
     public float speed;
     public float sensitivity;
@@ -26,9 +26,9 @@ public class TruckMovement : MonoBehaviour
         }
     }
 
-    private void Update()
+    /*private void Update()
     {
-        /*if (anim == null)
+        if (anim == null)
         {
             Debug.Log("ANIM NULL");
         }
@@ -45,28 +45,37 @@ public class TruckMovement : MonoBehaviour
             bool spin = Input.GetButton("TruckOn");
             bool moving = Input.GetButton("Move");
             MovementManagement(move, spin, moving);
-        }*/
-    }
+        }
+    }*/
 
     void FixedUpdate()
     {
         if (isTruck)
         {
             /*float turn = Input.GetAxis("Turn");
-            Rotating(turn);*/
+            Rotating(turn);
 
-            float forward = Input.GetAxisRaw("Vertical");
-            float sideways = Input.GetAxisRaw("Horizontal");
+            float forward = Input.GetAxisRaw("Move");
+            float sideways = Input.GetAxisRaw("Horizontal");*/
 
-            Vector3 movement = new(forward, 0, sideways);
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log("Working");
+                Vector3 movement = new(1f, 0, 0f);
+                movement *= speed;
+                movement = transform.TransformDirection(movement);
+
+                truckBody.AddForce(movement, ForceMode.Force);
+            }
+            /*Vector3 movement = new(forward, 0, sideways);
             movement *= speed;
             movement = transform.TransformDirection(movement);
 
-            truckBody.AddForce(movement, ForceMode.VelocityChange);
+            truckBody.AddForce(movement, ForceMode.VelocityChange);*/
         }
     }
 
-    void Rotating(float xInput)
+    /*void Rotating(float xInput)
     {
         if (isTruck)
         {
@@ -82,7 +91,7 @@ public class TruckMovement : MonoBehaviour
     {
         if (isTruck)
         {
-            /*anim.SetBool(hash.spinBool, spin);
+            anim.SetBool(hash.spinBool, spin);
             if (move > 0)
             {
                 // anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
@@ -92,7 +101,7 @@ public class TruckMovement : MonoBehaviour
             else
             {
                 // anim.SetFloat(hash.speedFloat, 0);
-            }*/
+            }
         }
-    }
+    }*/
 }

@@ -44,38 +44,11 @@ public class Transitions : MonoBehaviour
         }
     }
 
-    /* private void OnTriggerStay(Collider other)
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            /*if (truckMovement.isTruck)
-            {
-                truckMovement.isTruck = false;
-                PlayerCharacter.SetActive(true);
-                // playerMovement.Enable();
-                triggeredCam.enabled = false;
-                liveCam.enabled = true;
-                liveCam = Camera.allCameras[0];
-                Debug.Log("PLAYER");
-            }
-            if (playerMovement.getIsPlayer() && isClose && other == PlayerCollider)
-            {
-                truckMovement.isTruck = true;
-                // playerMovement.Disable();
-                PlayerCharacter.SetActive(false);
-                triggeredCam.enabled = true;
-                liveCam.enabled = false;
-                Debug.Log("TRUCK");
-            }
-        }
-    }*/
-
     private void OnTriggerEnter(Collider other)
     {
         if (other == PlayerCollider)
         {
             isClose = true;
-            
         }
     }
     private void OnTriggerExit(Collider other)
