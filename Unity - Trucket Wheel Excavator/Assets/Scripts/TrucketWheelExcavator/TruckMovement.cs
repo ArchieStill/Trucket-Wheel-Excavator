@@ -12,12 +12,14 @@ public class TruckMovement : MonoBehaviour
     public float sensitivity;
     public bool isMoving = false;
 
-    private Animator anim;
+    Animator animator;
     private TruckHashIDs hash;
     private Rigidbody truckBody;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+        Debug.Log(animator);
         truckBody = this.GetComponent<Rigidbody>();
     }
 
@@ -71,9 +73,22 @@ public class TruckMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isMoving)
+        if (isTruck)
         {
+            if (isMoving)
+            {
+                animator.SetBool("Driving", true);
+            }
 
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                animator.SetBool("Spinning", true);
+            }
+        }
+        else
+        {
+            animator.SetBool("Driving", false);
+            animator.SetBool("Spinning", false);
         }
     }
 
