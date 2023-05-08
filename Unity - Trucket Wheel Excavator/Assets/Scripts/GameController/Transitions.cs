@@ -19,7 +19,7 @@ public class Transitions : MonoBehaviour
         PlayerCollider = PlayerCharacter.GetComponent<Collider>();
         liveCam = Camera.allCameras[0];
     }
-
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -75,6 +75,7 @@ public class Transitions : MonoBehaviour
         if (other == PlayerCollider)
         {
             isClose = true;
+            
         }
     }
     private void OnTriggerExit(Collider other)

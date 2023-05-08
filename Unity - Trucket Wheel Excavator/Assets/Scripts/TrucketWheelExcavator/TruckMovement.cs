@@ -42,7 +42,8 @@ public class TruckMovement : MonoBehaviour
         {
             float move = Input.GetAxis("Move");
             bool spin = Input.GetButton("TruckOn");
-            MovementManagement(move, spin);
+            bool moving = Input.GetButton("Move");
+            MovementManagement(move, spin, moving);
         }
     }
 
@@ -67,19 +68,20 @@ public class TruckMovement : MonoBehaviour
         }
     }
 
-    void MovementManagement(float move, bool spin)
+    void MovementManagement(float move, bool spin, bool moving)
     {
         if (isTruck)
         {
             anim.SetBool(hash.spinBool, spin);
             if (move > 0)
             {
-                anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
-                Debug.Log("MOVE > 0");
+                // anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
+                anim.SetBool(hash.driveBool, moving);
+                Debug.Log(hash.driveBool);
             }
             else
             {
-                anim.SetFloat(hash.speedFloat, 0);
+                // anim.SetFloat(hash.speedFloat, 0);
             }
         }
     }
