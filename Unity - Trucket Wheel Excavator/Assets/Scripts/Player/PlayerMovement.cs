@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 2.5f;
     public bool isGrounded = true;
     private bool isPlayer = true;
+    public GameObject Excavator;
 
     private Animator anim;
     private HashIDs hash;
@@ -61,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     public void Enable()
     {
         isPlayer = true;
+        this.gameObject.transform.parent = Excavator.transform;
         // Change position so player spawns next to truck
     }
     public void Disable()

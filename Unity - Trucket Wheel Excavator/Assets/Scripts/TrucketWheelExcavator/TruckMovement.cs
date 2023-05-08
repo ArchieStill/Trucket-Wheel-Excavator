@@ -56,11 +56,19 @@ public class TruckMovement : MonoBehaviour
             movement *= speed;
             movement = transform.TransformDirection(movement);
 
-            truckBody.AddForce(movement, ForceMode.VelocityChange);
+            if (!Input.GetKeyDown(KeyCode.S))
+            {
+                truckBody.AddForce(movement, ForceMode.VelocityChange);
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                truckBody.AddForce(-movement, ForceMode.VelocityChange);
+            }
             isMoving = true;
             Debug.Log(isMoving);
         }
     }
+
     private void Update()
     {
         if (isMoving)

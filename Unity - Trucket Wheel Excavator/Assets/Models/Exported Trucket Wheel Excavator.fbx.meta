@@ -24,6 +24,9 @@ ModelImporter:
   - first:
       74: -5160988873135613888
     second: Stationary
+  - first:
+      74: -2584636111820317444
+    second: TWE Moving
   externalObjects: {}
   materials:
     materialImportMode: 2
