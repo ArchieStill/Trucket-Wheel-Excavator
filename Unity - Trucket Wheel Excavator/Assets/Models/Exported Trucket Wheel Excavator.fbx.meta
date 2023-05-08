@@ -20,7 +20,7 @@ ModelImporter:
     second: Wheel Going Down
   - first:
       74: -2584636111820317444
-    second: TWE Moving
+    second: Drive
   - first:
       74: -5160988873135613888
     second: Stationary
