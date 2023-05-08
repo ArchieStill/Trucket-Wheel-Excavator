@@ -61,6 +61,13 @@ public class TruckMovement : MonoBehaviour
             Debug.Log(isMoving);
         }
     }
+    private void Update()
+    {
+        if (isMoving)
+        {
+
+        }
+    }
 
     void Rotating(float xInput)
     {
