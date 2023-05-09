@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 2.5f;
     public bool isGrounded = true;
     public GameObject Excavator;
+    public GameObject smokeObject;
 
     private bool isPlayer = true;
     private float elapsedTime = 0;
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<HashIDs>();
             anim.SetLayerWeight(0, 0);
             ourBody = this.GetComponent<Rigidbody>();
-
+            smokeObject.SetActive(false);
             jumpVector = new Vector3(0, 2.0f, 0);
         }
     }
@@ -127,11 +128,9 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetButtonDown("Sprint"))
                 {
                     anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
-                    if (!GetComponent<AudioSource>().isPlaying)
-                    {
-                        GetComponent<AudioSource>().pitch = 0.75f;
-                        GetComponent<AudioSource>().Play();
-                    }
+                    smokeObject.transform.position = ourBody.position;
+                    smokeObject.transform.parent = transform;
+                    smokeObject.SetActive(true);
                 }
             }
             else if (move < 0)
@@ -151,12 +150,14 @@ public class PlayerMovement : MonoBehaviour
                 Vector3 moveBack = new(0f, 0f, movement / 4);
                 moveBack = ourBody.transform.TransformDirection(moveBack);
                 ourBody.transform.position += moveBack;
+                smokeObject.transform.parent = null;
             }
             else
             {
                 anim.SetFloat(hash.speedFloat, 0);
                 anim.SetBool(hash.backwardsBool, false);
                 noBackMov = true;
+                smokeObject.transform.parent = null;
             }
         }
     }
