@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3570069, g: 0.69702756, b: 0.72354054, a: 1}
+  m_IndirectSpecularColor: {r: 0.35702324, g: 0.6970393, b: 0.7235334, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -607,6 +607,7 @@ GameObject:
   - component: {fileID: 99274637}
   - component: {fileID: 99274636}
   - component: {fileID: 99274635}
+  - component: {fileID: 99274640}
   m_Layer: 0
   m_Name: BreakableWall1-1
   m_TagString: Untagged
@@ -708,6 +709,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &99274640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99274634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 99274635}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1001 &104227324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1040,8 +1056,9 @@ MonoBehaviour:
   drivingState: 0
   speedFloat: 0
   upBool: 0
-  spinBool: 0
   driveBool: 0
+  spinSBool: 0
+  spinCBool: 0
   moveWheel: 0
 --- !u!82 &186696154
 AudioSource:
@@ -1399,6 +1416,7 @@ GameObject:
   - component: {fileID: 533934054}
   - component: {fileID: 533934053}
   - component: {fileID: 533934052}
+  - component: {fileID: 533934057}
   m_Layer: 0
   m_Name: BreakableWall3-2
   m_TagString: Untagged
@@ -1500,6 +1518,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &533934057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533934051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 533934052}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1001 &567387364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2715,6 +2748,7 @@ GameObject:
   - component: {fileID: 965211888}
   - component: {fileID: 965211887}
   - component: {fileID: 965211886}
+  - component: {fileID: 965211891}
   m_Layer: 0
   m_Name: BreakableWall2-1
   m_TagString: Untagged
@@ -2816,6 +2850,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &965211891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965211885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 965211886}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!4 &997958994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3888651750138880309, guid: 25b527e4e3878974b8623a7f2d7994c1, type: 3}
@@ -3233,6 +3282,7 @@ GameObject:
   - component: {fileID: 1129103767}
   - component: {fileID: 1129103766}
   - component: {fileID: 1129103765}
+  - component: {fileID: 1129103770}
   m_Layer: 0
   m_Name: BreakableWall2-2
   m_TagString: Untagged
@@ -3334,6 +3384,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1129103770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129103764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1129103765}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1 &1172718121
 GameObject:
   m_ObjectHideFlags: 0
@@ -3347,6 +3412,7 @@ GameObject:
   - component: {fileID: 1172718124}
   - component: {fileID: 1172718123}
   - component: {fileID: 1172718122}
+  - component: {fileID: 1172718127}
   m_Layer: 0
   m_Name: BreakableWall2-3
   m_TagString: Untagged
@@ -3448,6 +3514,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1172718127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172718121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1172718122}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1001 &1191684523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3584,6 +3665,7 @@ GameObject:
   - component: {fileID: 1196915020}
   - component: {fileID: 1196915019}
   - component: {fileID: 1196915018}
+  - component: {fileID: 1196915023}
   m_Layer: 0
   m_Name: BreakableWall3-3
   m_TagString: Untagged
@@ -3685,6 +3767,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1196915023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196915017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1196915018}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1001 &1258176199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4115,6 +4212,7 @@ GameObject:
   - component: {fileID: 1428650032}
   - component: {fileID: 1428650031}
   - component: {fileID: 1428650030}
+  - component: {fileID: 1428650035}
   m_Layer: 0
   m_Name: BreakableWall3-1
   m_TagString: Untagged
@@ -4216,6 +4314,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1428650035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428650029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1428650030}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1 &1460602848
 GameObject:
   m_ObjectHideFlags: 0
@@ -4229,6 +4342,7 @@ GameObject:
   - component: {fileID: 1460602851}
   - component: {fileID: 1460602850}
   - component: {fileID: 1460602849}
+  - component: {fileID: 1460602854}
   m_Layer: 0
   m_Name: BreakableWall1-2
   m_TagString: Untagged
@@ -4330,6 +4444,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1460602854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460602848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1460602849}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1 &1546144464
 GameObject:
   m_ObjectHideFlags: 0
@@ -4833,6 +4962,7 @@ GameObject:
   - component: {fileID: 1750062678}
   - component: {fileID: 1750062677}
   - component: {fileID: 1750062676}
+  - component: {fileID: 1750062681}
   m_Layer: 0
   m_Name: BreakableWall4-1
   m_TagString: Untagged
@@ -4934,6 +5064,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1750062681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750062675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1750062676}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!4 &1760434033 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3888651750138880309, guid: 25b527e4e3878974b8623a7f2d7994c1, type: 3}
@@ -4952,6 +5097,7 @@ GameObject:
   - component: {fileID: 1792430412}
   - component: {fileID: 1792430411}
   - component: {fileID: 1792430410}
+  - component: {fileID: 1792430415}
   m_Layer: 0
   m_Name: BreakableWall4-2
   m_TagString: Untagged
@@ -5053,6 +5199,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792430415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792430409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1792430410}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1 &1866248159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5104,6 +5265,7 @@ GameObject:
   - component: {fileID: 1927949559}
   - component: {fileID: 1927949558}
   - component: {fileID: 1927949557}
+  - component: {fileID: 1927949562}
   m_Layer: 0
   m_Name: BreakableWall1-3
   m_TagString: Untagged
@@ -5205,6 +5367,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1927949562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927949556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 1927949557}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1 &2021475301
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,6 +5395,7 @@ GameObject:
   - component: {fileID: 2021475304}
   - component: {fileID: 2021475303}
   - component: {fileID: 2021475302}
+  - component: {fileID: 2021475307}
   m_Layer: 0
   m_Name: BreakableWall4-3
   m_TagString: Untagged
@@ -5319,6 +5497,21 @@ Transform:
   m_Father: {fileID: 1054579978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2021475307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021475301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c236dc10148f25743956bdea21bd5387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubeBody: {fileID: 2021475302}
+  wheelCollider: {fileID: 231408959}
+  truckMovement: {fileID: 2050923759}
 --- !u!1 &2031892938
 GameObject:
   m_ObjectHideFlags: 0
@@ -5485,6 +5678,7 @@ MonoBehaviour:
   speed: 10
   sensitivity: 5
   isMoving: 0
+  isSpinning: 0
   wheelCollider: {fileID: 231408959}
 --- !u!95 &2050923760
 Animator:
