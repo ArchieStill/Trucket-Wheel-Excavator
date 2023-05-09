@@ -14,6 +14,7 @@ public class Transitions : MonoBehaviour
     public GameObject PlayerCharacter;
     public Collider PlayerCollider;
     public GameObject textObject;
+    public GameObject driverObject;
 
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class Transitions : MonoBehaviour
         PlayerCollider = PlayerCharacter.GetComponent<Collider>();
         liveCam = Camera.allCameras[0];
         textObject.SetActive(false);
+        driverObject.SetActive(false);
     }
     
     private void Update()
@@ -32,6 +34,7 @@ public class Transitions : MonoBehaviour
                 truckMovement.isTruck = true;
                 playerMovement.Disable();
                 PlayerCharacter.SetActive(false);
+                driverObject.SetActive(true);
                 triggeredCam.enabled = true;
                 liveCam.enabled = false;
             }
@@ -40,6 +43,7 @@ public class Transitions : MonoBehaviour
                 truckMovement.isTruck = false;
                 PlayerCharacter.SetActive(true);
                 playerMovement.Enable();
+                driverObject.SetActive(false);
                 triggeredCam.enabled = false;
                 liveCam.enabled = true;
                 liveCam = Camera.allCameras[0];
