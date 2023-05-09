@@ -8,9 +8,12 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 jumpVector;
     public float jumpForce = 2.5f;
     public bool isGrounded = true;
-    private bool isPlayer = true;
     public GameObject Excavator;
 
+    private bool isPlayer = true;
+    private float elapsedTime = 0;
+    private bool noBackMov = true;
+    private float desiredDuration = 0.5f;
     private Animator anim;
     private HashIDs hash;
     private Rigidbody ourBody;
@@ -48,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
             bool sprint = Input.GetButton("Sprint");
             MovementManagement(move, sprint, sneak, jump);
             this.gameObject.transform.parent = Excavator.transform;
+
+            elapsedTime += Time.deltaTime;
         }
     }
 
@@ -112,15 +117,37 @@ public class PlayerMovement : MonoBehaviour
 
             if (move > 0)
             {
-                anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
+                anim.SetFloat(hash.speedFloat, 1.5f, speedDampTime, Time.deltaTime);
+                anim.SetBool("Backwards", false);
+                noBackMov = true;
                 if (Input.GetButtonDown("Sprint"))
                 {
                     anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
                 }
             }
+            else if (move < 0)
+            {
+                if (noBackMov)
+                {
+                    elapsedTime = 0;
+                    noBackMov = false;
+                }
+                float percentageComplete = elapsedTime / desiredDuration;
+
+                anim.SetFloat(hash.speedFloat, -animationSpeed, speedDampTime, Time.deltaTime);
+                anim.SetBool("Backwards", true);
+
+                ourBody = this.GetComponent<Rigidbody>();
+                float movement = Mathf.Lerp(0f, -0.025f, percentageComplete);
+                Vector3 moveBack = new(0f, 0f, movement / 4);
+                moveBack = ourBody.transform.TransformDirection(moveBack);
+                ourBody.transform.position += moveBack;
+            }
             else
             {
                 anim.SetFloat(hash.speedFloat, 0);
+                anim.SetBool(hash.backwardsBool, false);
+                noBackMov = true;
             }
         }
     }
