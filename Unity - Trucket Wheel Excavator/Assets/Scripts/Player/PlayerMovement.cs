@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             bool jump = Input.GetButtonDown("Jump");
             bool sprint = Input.GetButton("Sprint");
             MovementManagement(move, sprint, sneak, jump);
+            this.gameObject.transform.parent = Excavator.transform;
         }
     }
 
@@ -62,8 +63,6 @@ public class PlayerMovement : MonoBehaviour
     public void Enable()
     {
         isPlayer = true;
-        this.gameObject.transform.parent = Excavator.transform;
-        // Change position so player spawns next to truck
     }
     public void Disable()
     {
@@ -85,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
                 ourBody.MoveRotation(ourBody.rotation * deltaRotation);
             }
         }
-        /// Debug.Log(xInput);
     }
     void MovementManagement(float move, bool sprinting, bool sneaking, bool jumping)
     {
