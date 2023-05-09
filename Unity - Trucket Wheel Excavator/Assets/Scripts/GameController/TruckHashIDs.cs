@@ -7,14 +7,16 @@ public class TruckHashIDs : MonoBehaviour
     public int drivingState;
 	public int speedFloat;
 	public int upBool;
-	public int spinBool;
 	public int driveBool;
+	public int spinSBool;
+	public int spinCBool;
 	public int moveWheel;
 
 	private void Awake()
 	{
-		spinBool = Animator.StringToHash("WheelMove");
-		driveBool = Animator.StringToHash("TruckMoving");
+		driveBool = Animator.StringToHash("Drive");
+		spinSBool = Animator.StringToHash("WheelSpin Start");
+		spinCBool = Animator.StringToHash("WheelSpin Cont");
 		moveWheel = Animator.StringToHash("MoveUp");
 	}
 }

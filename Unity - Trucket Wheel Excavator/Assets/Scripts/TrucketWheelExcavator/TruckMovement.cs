@@ -11,6 +11,7 @@ public class TruckMovement : MonoBehaviour
     public float speed;
     public float sensitivity;
     public bool isMoving = false;
+    public bool isSpinning = false;
 
     Animator animator;
     public GameObject wheelCollider;
@@ -68,11 +69,13 @@ public class TruckMovement : MonoBehaviour
             {
                 animator.SetBool("Spinning", true);
                 wheelCollider.SetActive(true);
+                isSpinning = true;
             }
             if (Input.GetButton("StopSpin"))
             {
                 animator.SetBool("Spinning", false);
                 wheelCollider.SetActive(false);
+                isSpinning = false;
             }
         }
         else
@@ -80,6 +83,7 @@ public class TruckMovement : MonoBehaviour
             GetComponent<AudioSource>().Stop();
             animator.SetBool("Driving", false);
             animator.SetBool("Spinning", false);
+            isSpinning = false;
         }
     }
 
