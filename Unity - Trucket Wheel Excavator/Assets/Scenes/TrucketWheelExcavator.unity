@@ -4086,7 +4086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.71
+      value: 1.58
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4118,27 +4118,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.103773594
+      value: 0.3301887
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.103773594
+      value: 0.3301887
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.103773594
+      value: 0.3301887
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startColor.minColor.b
-      value: 0.1792453
+      value: 0.2830189
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startColor.minColor.g
-      value: 0.1792453
+      value: 0.2830189
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 98c58c8dd46640c49bb5f557afafea7c, type: 3}
       propertyPath: InitialModule.startColor.minColor.r
-      value: 0.1792453
+      value: 0.2830189
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -5527,7 +5527,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1f7aa4d40edff6e48b549003cad031e1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f7aa4d40edff6e48b549003cad031e1, type: 3}
       propertyPath: m_RootOrder
