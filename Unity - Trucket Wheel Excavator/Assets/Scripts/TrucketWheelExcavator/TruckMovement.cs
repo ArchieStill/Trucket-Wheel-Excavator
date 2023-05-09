@@ -13,37 +13,17 @@ public class TruckMovement : MonoBehaviour
     public bool isMoving = false;
 
     Animator animator;
+    public GameObject wheelCollider;
+
     private TruckHashIDs hash;
     private Rigidbody truckBody;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        Debug.Log(animator);
+        this.gameObject.transform.parent = wheelCollider.transform;
         truckBody = this.GetComponent<Rigidbody>();
     }
-
-    /*private void Update()
-    {
-        if (anim == null)
-        {
-            Debug.Log("ANIM NULL");
-        }
-        if (hash == null)
-        {
-            Debug.Log("HASH NULL");
-        }
-        anim = GetComponent<Animator>();
-        hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<TruckHashIDs>();
-        anim.SetLayerWeight(0, 0);
-        if (isTruck)
-        {
-            float move = Input.GetAxis("Move");
-            bool spin = Input.GetButton("TruckOn");
-            bool moving = Input.GetButton("Move");
-            MovementManagement(move, spin, moving);
-        }
-    }*/
 
     void FixedUpdate()
     {
@@ -67,7 +47,6 @@ public class TruckMovement : MonoBehaviour
                 truckBody.AddForce(-movement, ForceMode.VelocityChange);
             }
             isMoving = true;
-            Debug.Log(isMoving);
         }
     }
 
@@ -83,12 +62,13 @@ public class TruckMovement : MonoBehaviour
             if (Input.GetButton("Spin"))
             {
                 animator.SetBool("Spinning", true);
+                wheelCollider.SetActive(true);
             }
             if (Input.GetButton("StopSpin"))
             {
                 animator.SetBool("Spinning", false);
+                wheelCollider.SetActive(false);
             }
-
         }
         else
         {
@@ -108,20 +88,4 @@ public class TruckMovement : MonoBehaviour
             }
         }
     }
-
-    /*void MovementManagement(float move, bool spin, bool moving)
-    {
-        if (isTruck)
-        {
-            anim.SetBool(hash.spinBool, spin);
-            if (move > 0)
-            {
-                anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
-            }
-            else
-            {
-                anim.SetFloat(hash.speedFloat, 0);
-            }
-        }
-    }*/
 }
