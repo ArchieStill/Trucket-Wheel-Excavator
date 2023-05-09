@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public AudioClip shoutingClip;
     public float speedDampTime = 0.01f;
     public float sensitivityX = 1.0f;
     public float animationSpeed = 1.5f;
@@ -53,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
             this.gameObject.transform.parent = Excavator.transform;
 
             elapsedTime += Time.deltaTime;
+            bool shout = Input.GetKeyDown(KeyCode.P);
+            anim.SetBool("Shouting", true);
+            AudioManagement(shout);
         }
     }
 
@@ -123,6 +127,11 @@ public class PlayerMovement : MonoBehaviour
                 if (Input.GetButtonDown("Sprint"))
                 {
                     anim.SetFloat(hash.speedFloat, animationSpeed, speedDampTime, Time.deltaTime);
+                    if (!GetComponent<AudioSource>().isPlaying)
+                    {
+                        GetComponent<AudioSource>().pitch = 0.75f;
+                        GetComponent<AudioSource>().Play();
+                    }
                 }
             }
             else if (move < 0)
@@ -149,6 +158,26 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool(hash.backwardsBool, false);
                 noBackMov = true;
             }
+        }
+    }
+
+    void AudioManagement(bool shout)
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walk"))
+        {
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().pitch = 0.5f;
+                GetComponent<AudioSource>().Play();
+            }
+        }
+        else
+        {
+            GetComponent<AudioSource>().Stop();
+        }
+        if (shout)
+        {
+            AudioSource.PlayClipAtPoint(shoutingClip, transform.position);
         }
     }
 }

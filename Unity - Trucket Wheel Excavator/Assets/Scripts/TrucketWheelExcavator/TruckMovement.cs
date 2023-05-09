@@ -54,6 +54,11 @@ public class TruckMovement : MonoBehaviour
     {
         if (isTruck)
         {
+            if (!GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().Play();
+            }
+
             if (isMoving)
             {
                 animator.SetBool("Driving", true);
@@ -72,6 +77,7 @@ public class TruckMovement : MonoBehaviour
         }
         else
         {
+            GetComponent<AudioSource>().Stop();
             animator.SetBool("Driving", false);
             animator.SetBool("Spinning", false);
         }
