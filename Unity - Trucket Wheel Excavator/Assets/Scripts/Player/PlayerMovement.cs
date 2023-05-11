@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetLayerWeight(0, 0);
             ourBody = this.GetComponent<Rigidbody>();
             smokeObject.SetActive(false);
+
             jumpVector = new Vector3(0, 2.0f, 0);
         }
     }
@@ -52,12 +53,16 @@ public class PlayerMovement : MonoBehaviour
             bool jump = Input.GetButtonDown("Jump");
             bool sprint = Input.GetButton("Sprint");
             MovementManagement(move, sprint, sneak, jump);
-            this.gameObject.transform.parent = Excavator.transform;
+            this.gameObject.transform.parent = null;
 
             elapsedTime += Time.deltaTime;
             bool shout = Input.GetKeyDown(KeyCode.P);
             anim.SetBool("Shouting", true);
             AudioManagement(shout);
+        }
+        else if (!isPlayer)
+        {
+            this.gameObject.transform.parent = Excavator.transform;
         }
     }
 
@@ -99,9 +104,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isPlayer)
         {
-            /// Ray ray = new Ray(transform.position, Vector3.down);
+            Ray ray = new Ray(transform.position, Vector3.down);
             /// Debug.DrawRay(transform.position, Vector3.down, Color.red, 1);
-            /// Physics.Raycast(ray, out hit);
+            Physics.Raycast(ray, out hit);
             if (hit.distance < 0.25f)
             {
                 isGrounded = true;
