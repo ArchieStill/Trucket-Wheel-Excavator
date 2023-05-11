@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private HashIDs hash;
     private Rigidbody ourBody;
-    RaycastHit hit;
 
     void Awake()
     {
@@ -35,14 +34,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    private void OnCollisionStay(Collision collision)
+    /*private void OnCollisionStay(Collision collision)
     {
         isGrounded = true;
     }
     private void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
-    }
+    }*/
 
     private void Update()
     {
@@ -104,10 +103,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isPlayer)
         {
-            Ray ray = new Ray(transform.position, Vector3.down);
-            /// Debug.DrawRay(transform.position, Vector3.down, Color.red, 1);
-            Physics.Raycast(ray, out hit);
-            if (hit.distance < 0.25f)
+            Ray ray = new(transform.position, Vector3.down);
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(ray, out hit, Mathf.Infinity, ~(1 << 6));
+            if (hasHit && hit.distance < 2f)
             {
                 isGrounded = true;
             }
@@ -115,6 +114,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 isGrounded = false;
             }
+
+           // isGrounded = Physics.Raycast(ray, out hit, 0.25f, ~(1 << 6));
+           /// Debug.DrawRay(transform.position, Vector3.down, Color.red, 1);
+           /*Physics.Raycast(ray, out hit);
+           if (hit.distance < 0.25f)
+           {
+               isGrounded = true;
+           }
+           else
+           {
+               isGrounded = false;
+           }*/
 
             anim.SetBool(hash.sneakingBool, sneaking);
             anim.SetBool(hash.jumpingBool, jumping);
