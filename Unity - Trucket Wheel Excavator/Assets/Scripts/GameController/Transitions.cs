@@ -15,6 +15,7 @@ public class Transitions : MonoBehaviour
     public Collider PlayerCollider;
     public GameObject textObject;
     public GameObject driverObject;
+    public GameObject lightObject;
 
     private void Awake()
     {
@@ -23,6 +24,7 @@ public class Transitions : MonoBehaviour
         liveCam = Camera.allCameras[0];
         textObject.SetActive(false);
         driverObject.SetActive(false);
+        lightObject.SetActive(true);
     }
     
     private void Update()
@@ -35,6 +37,8 @@ public class Transitions : MonoBehaviour
                 playerMovement.Disable();
                 PlayerCharacter.SetActive(false);
                 driverObject.SetActive(true);
+                lightObject.SetActive(false);
+                PlayerCharacter.transform.parent = driverObject.transform;
                 triggeredCam.enabled = true;
                 liveCam.enabled = false;
             }
@@ -44,6 +48,7 @@ public class Transitions : MonoBehaviour
                 PlayerCharacter.SetActive(true);
                 playerMovement.Enable();
                 driverObject.SetActive(false);
+                PlayerCharacter.transform.parent = null;
                 triggeredCam.enabled = false;
                 liveCam.enabled = true;
                 liveCam = Camera.allCameras[0];
