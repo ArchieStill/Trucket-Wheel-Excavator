@@ -13,6 +13,7 @@ public class Transitions : MonoBehaviour
     public bool isClose = false;
     public GameObject PlayerCharacter;
     public Collider PlayerCollider;
+    public GameObject TruckObject;
     public GameObject textObject;
     public GameObject driverObject;
     public GameObject smokeObject;
@@ -22,6 +23,8 @@ public class Transitions : MonoBehaviour
     {
         PlayerCharacter = GameObject.FindGameObjectWithTag("Player");
         PlayerCollider = PlayerCharacter.GetComponent<Collider>();
+        PlayerCharacter.GetComponent<AudioListener>().enabled = true;
+        TruckObject.GetComponent<AudioListener>().enabled = false;
         liveCam = Camera.allCameras[0];
         textObject.SetActive(false);
         driverObject.SetActive(false);
@@ -42,6 +45,8 @@ public class Transitions : MonoBehaviour
                 smokeObject.SetActive(true);
                 lightObject.SetActive(false);
                 PlayerCharacter.transform.parent = driverObject.transform;
+                PlayerCharacter.GetComponent<AudioListener>().enabled = false;
+                TruckObject.GetComponent<AudioListener>().enabled = true;
                 triggeredCam.enabled = true;
                 liveCam.enabled = false;
             }
@@ -52,6 +57,8 @@ public class Transitions : MonoBehaviour
                 playerMovement.Enable();
                 driverObject.SetActive(false);
                 PlayerCharacter.transform.parent = null;
+                PlayerCharacter.GetComponent<AudioListener>().enabled = true;
+                TruckObject.GetComponent<AudioListener>().enabled = false;
                 triggeredCam.enabled = false;
                 liveCam.enabled = true;
                 liveCam = Camera.allCameras[0];

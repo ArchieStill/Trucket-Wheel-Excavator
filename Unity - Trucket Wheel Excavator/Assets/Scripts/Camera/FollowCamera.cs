@@ -37,7 +37,7 @@ public class FollowCamera : MonoBehaviour
         {
             if (Input.GetMouseButton(0))
             {
-                Vector3 LocalRight = target.transform.worldToLocalMatrix.MultiplyPoint(transform.right);
+                Vector3 LocalRight = -target.transform.worldToLocalMatrix.MultiplyPoint(transform.right);
                 offset = Quaternion.AngleAxis(mouseY, LocalRight) * offset;
             }
         }
