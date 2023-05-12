@@ -88,6 +88,8 @@ public class TruckMovement : MonoBehaviour
             GetComponent<AudioSource>().Stop();
             animator.SetBool("Driving", false);
             animator.SetBool("Spinning", false);
+            wheelCollider.SetActive(false);
+            wheelParticles.SetActive(false);
             isSpinning = false;
         }
     }

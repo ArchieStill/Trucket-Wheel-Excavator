@@ -33,15 +33,6 @@ public class PlayerMovement : MonoBehaviour
             jumpVector = new Vector3(0, 2.0f, 0);
         }
     }
-    
-    /*private void OnCollisionStay(Collision collision)
-    {
-        isGrounded = true;
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        isGrounded = false;
-    }*/
 
     private void Update()
     {
