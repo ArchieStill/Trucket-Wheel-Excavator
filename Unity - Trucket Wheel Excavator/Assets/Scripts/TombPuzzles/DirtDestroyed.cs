@@ -22,11 +22,9 @@ public class DirtDestroyed : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         float step = speed * Time.deltaTime;
-        if (other == wheelCollider && truckMovement.isSpinning)
+        if (truckMovement.isSpinning)
         {
-            moundsDestroyed++;
-            Debug.Log(moundsDestroyed);
-            dirtMound.SetActive(false);
+            dirtMound.transform.position = Vector3.MoveTowards(dirtMound.transform.position, endPos.transform.position, step);
         }
     }
 }
