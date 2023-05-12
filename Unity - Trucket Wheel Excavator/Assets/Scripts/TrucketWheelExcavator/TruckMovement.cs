@@ -15,6 +15,7 @@ public class TruckMovement : MonoBehaviour
 
     Animator animator;
     public GameObject wheelCollider;
+    public GameObject wheelParticles;
 
     private TruckHashIDs hash;
     private Rigidbody truckBody;
@@ -23,6 +24,7 @@ public class TruckMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         this.gameObject.transform.parent = wheelCollider.transform;
+        wheelParticles.SetActive(false);
         truckBody = this.GetComponent<Rigidbody>();
     }
 
@@ -69,12 +71,14 @@ public class TruckMovement : MonoBehaviour
             {
                 animator.SetBool("Spinning", true);
                 wheelCollider.SetActive(true);
+                wheelParticles.SetActive(true);
                 isSpinning = true;
             }
             if (Input.GetButton("StopSpin"))
             {
                 animator.SetBool("Spinning", false);
                 wheelCollider.SetActive(false);
+                wheelParticles.SetActive(false);
                 isSpinning = false;
             }
         }
