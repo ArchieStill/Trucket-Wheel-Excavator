@@ -71,6 +71,7 @@ public class TruckMovement : MonoBehaviour
             {
                 animator.SetBool("Spinning", true);
                 wheelCollider.SetActive(true);
+                wheelParticles.transform.parent = transform;
                 wheelParticles.SetActive(true);
                 isSpinning = true;
             }

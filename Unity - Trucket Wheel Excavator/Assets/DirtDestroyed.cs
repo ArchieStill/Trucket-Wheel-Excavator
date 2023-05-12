@@ -6,21 +6,27 @@ public class DirtDestroyed : MonoBehaviour
 {
     public GameObject startPos;
     public GameObject endPos;
-    public GameObject wheelCollider;
+    public GameObject TruckObject;
+    public Collider wheelCollider;
     public TruckMovement truckMovement;
+    public GameObject dirtMound;
     public float speed = 3f;
+    public int moundsDestroyed = 0;
 
     private void Awake()
     {
-        wheelCollider.GetComponent<Collider>();
+        TruckObject = GameObject.FindGameObjectWithTag("TWE");
+        wheelCollider = TruckObject.GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         float step = speed * Time.deltaTime;
-        if (other == wheelCollider)
+        if (other == wheelCollider && truckMovement.isSpinning)
         {
-            transform.position = Vector3.MoveTowards(transform.position, endPos.transform.position, step);
+            moundsDestroyed++;
+            Debug.Log(moundsDestroyed);
+            dirtMound.SetActive(false);
         }
     }
 }
