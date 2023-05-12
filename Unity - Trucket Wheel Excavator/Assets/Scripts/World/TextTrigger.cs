@@ -21,7 +21,7 @@ public class TextTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == PlayerCollider || other == TruckCollider)
+        if (other == PlayerCollider)
         {
             textObject.SetActive(true);
         }
